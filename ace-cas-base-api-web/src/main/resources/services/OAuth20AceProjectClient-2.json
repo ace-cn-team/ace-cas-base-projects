@@ -1,0 +1,15 @@
+{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "ace-project-client",
+  "clientSecret": "ace-project-client-secret",
+  "serviceId" : "^(http|https|imaps)://<redirect-uri>.*",
+  "name" : "OAuthService",
+  "generateRefreshToken" : true,
+  "renewRefreshToken" : true,
+  "id" : 2,
+  "evaluationOrder": 1,
+  "requiredHandlers" : [ "java.util.HashSet", [ "OAuth2RedisAuthenticationHandler" ] ],
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
+  }
+}
