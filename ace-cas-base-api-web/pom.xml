@@ -145,6 +145,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>2.1.0</version>
                 <configuration>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>
                     <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
                     <from>
                         <!--使用openjdk官方镜像，tag是 -->

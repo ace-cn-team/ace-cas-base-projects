@@ -1,2 +1,5 @@
 /.idea/
 /ace-cas-base-projects.iml
+/ace-cas-base-api/target/
+/ace-cas-base-api-client-autoconfigure/target/
+/ace-cas-base-discovery-client-autoconfigure/target/
