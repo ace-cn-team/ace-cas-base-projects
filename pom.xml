@@ -35,6 +35,7 @@
         <module>ace-cas-base-api-client-autoconfigure</module>
         <module>ace-cas-base-api-web</module>
         <module>ace-cas-base-discovery-client-autoconfigure</module>
+        <module>ace-cas-base-define</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -72,6 +73,16 @@
             <dependency>
                 <groupId>org.ace</groupId>
                 <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
+                <version>${ace.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-cas-base-api</artifactId>
+                <version>${ace.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-cas-base-define</artifactId>
                 <version>${ace.version}</version>
             </dependency>
         </dependencies>

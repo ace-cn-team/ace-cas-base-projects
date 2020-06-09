@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-account-define</artifactId>
+            <artifactId>ace-cas-base-define</artifactId>
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-account-cas-base-api</artifactId>
+            <artifactId>ace-cas-base-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-account-define</artifactId>
+            <artifactId>ace-cas-base-define</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

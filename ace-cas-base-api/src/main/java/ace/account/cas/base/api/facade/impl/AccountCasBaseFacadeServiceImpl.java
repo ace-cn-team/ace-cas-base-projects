@@ -2,9 +2,9 @@ package ace.account.cas.base.api.facade.impl;
 
 import ace.account.cas.base.api.facade.AccountCasBaseFacadeService;
 import ace.account.cas.base.api.service.AccountCasBaseService;
-import ace.account.define.base.constant.AccountCasConstants;
-import ace.account.define.base.model.request.GetOAuth2TokenRequest;
-import ace.account.define.base.model.response.GetOAuth2TokenResponse;
+import ace.cas.base.define.constant.CasConstants;
+import ace.cas.base.define.model.dto.OAuth2Token;
+import ace.cas.base.define.model.request.GetOAuth2TokenRequest;
 import ace.fw.json.JsonUtils;
 import ace.fw.model.response.GenericResponseExt;
 import ace.fw.util.GenericResponseExtUtils;
@@ -26,12 +26,12 @@ public class AccountCasBaseFacadeServiceImpl implements AccountCasBaseFacadeServ
     private AccountCasBaseService accountCasBaseService;
 
     @Override
-    public GenericResponseExt<GetOAuth2TokenResponse> getOAuth2Token(String accountIdentityId) {
+    public GenericResponseExt<OAuth2Token> getOAuth2Token(String accountIdentityId) {
         GetOAuth2TokenRequest request = GetOAuth2TokenRequest.builder()
-                .clientId(AccountCasConstants.CAS_OAUTH2_CLIENT_ID_DEFAULT_VALUE)
-                .clientSecret(AccountCasConstants.CAS_OAUTH2_CLIENT_SECRET_DEFAULT_VALUE)
-                .grantType(AccountCasConstants.CAS_OAUTH2_GRANT_TYPE_DEFAULT_VALUE)
-                .password(AccountCasConstants.CAS_OAUTH2_PASSWORD_DEFAULT_VALUE)
+                .clientId(CasConstants.CAS_OAUTH2_CLIENT_ID_DEFAULT_VALUE)
+                .clientSecret(CasConstants.CAS_OAUTH2_CLIENT_SECRET_DEFAULT_VALUE)
+                .grantType(CasConstants.CAS_OAUTH2_GRANT_TYPE_DEFAULT_VALUE)
+                .password(CasConstants.CAS_OAUTH2_PASSWORD_DEFAULT_VALUE)
                 .username(accountIdentityId)
                 .build();
         String body = accountCasBaseService.getOAuth2Token(request);
@@ -39,7 +39,7 @@ public class AccountCasBaseFacadeServiceImpl implements AccountCasBaseFacadeServ
             log.error("请求失败[AccountCasBaseFacadeService][getOAuth2Token]," + body);
             return GenericResponseExtUtils.buildFailureWithData(null);
         }
-        GetOAuth2TokenResponse getOAuth2TokenResponse = JsonUtils.toObject(body, GetOAuth2TokenResponse.class);
-        return GenericResponseExtUtils.buildSuccessWithData(getOAuth2TokenResponse);
+        OAuth2Token oAuth2Token = JsonUtils.toObject(body, OAuth2Token.class);
+        return GenericResponseExtUtils.buildSuccessWithData(oAuth2Token);
     }
 }

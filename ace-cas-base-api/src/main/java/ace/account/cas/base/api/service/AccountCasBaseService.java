@@ -1,9 +1,7 @@
 package ace.account.cas.base.api.service;
 
-import ace.account.define.base.constant.AccountCasConstants;
-import ace.account.define.base.model.request.GetOAuth2TokenRequest;
-import ace.account.define.base.model.response.GetOAuth2TokenResponse;
-import ace.fw.model.response.GenericResponseExt;
+import ace.cas.base.define.constant.CasConstants;
+import ace.cas.base.define.model.request.GetOAuth2TokenRequest;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +18,7 @@ import javax.validation.Valid;
  * @description
  */
 @FeignClient(
-        name = AccountCasConstants.FEIGN_CLIENT_NAME,
+        name = CasConstants.FEIGN_CLIENT_NAME,
         contextId = "accountCasBaseService",
         path = "/" + AccountCasBaseService.MODULE_RESTFUL_NAME
 )
