@@ -3,3 +3,8 @@
 /ace-cas-base-api/target/
 /ace-cas-base-api-client-autoconfigure/target/
 /ace-cas-base-discovery-client-autoconfigure/target/
+/ace-cas-base-api/ace-cas-base-api.iml
+/ace-cas-base-api-client-autoconfigure/ace-cas-base-api-client-autoconfigure.iml
+/ace-cas-base-define/target/
+/ace-cas-base-define/ace-cas-base-define.iml
+/ace-cas-base-discovery-client-autoconfigure/ace-cas-base-discovery-client-autoconfigure.iml
