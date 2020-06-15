@@ -1,8 +1,8 @@
 @echo off
 
 @set JAVA_ARGS=-Xms1g -Xmx2g
-@set CAS_DIR=\etc\cas
-@set CONFIG_DIR=\etc\cas\config
+@set CAS_DIR=/etc/cas
+@set CONFIG_DIR=/etc/cas/config
 @set WAR_NAME=ace-cas-base-api-web.war
 @rem Call this script with DNAME and CERT_SUBJ_ALT_NAMES already set to override
 @if "%DNAME%" == "" set DNAME=CN=cas.example.org,OU=Example,OU=Org,C=US
