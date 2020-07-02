@@ -1,4 +1,4 @@
-package ace.account.cas.base.api.client.autoconfigure;
+package ace.cas.base.api.client.autoconfigure;
 
 import ace.cas.base.define.constant.CasConstants;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;

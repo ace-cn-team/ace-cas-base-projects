@@ -1,4 +1,4 @@
-package ace.account.cas.base.api.service;
+package ace.cas.base.api.service;
 
 import ace.cas.base.define.constant.CasConstants;
 import ace.cas.base.define.model.request.GetOAuth2TokenRequest;
@@ -20,10 +20,10 @@ import javax.validation.Valid;
 @FeignClient(
         name = CasConstants.FEIGN_CLIENT_NAME,
         contextId = "accountCasBaseService",
-        path = "/" + AccountCasBaseService.MODULE_RESTFUL_NAME
+        path = "/" + CasBaseService.MODULE_RESTFUL_NAME
 )
 @Validated
-public interface AccountCasBaseService {
+public interface CasBaseService {
     String MODULE_RESTFUL_NAME = "account-cas-base";
 
     @ApiOperation(value = "获取OAuth2 token")

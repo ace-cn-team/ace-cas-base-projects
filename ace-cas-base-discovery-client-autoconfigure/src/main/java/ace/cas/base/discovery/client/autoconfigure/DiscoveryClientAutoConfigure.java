@@ -1,4 +1,4 @@
-package ace.account.cas.comp.discovery.client.autoconfigure;
+package ace.cas.base.discovery.client.autoconfigure;
 
 
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

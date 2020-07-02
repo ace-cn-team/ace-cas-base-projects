@@ -22,7 +22,9 @@
 @if "%1" == "package" call:package %2 %3 %4
 @if "%1" == "bootrun"  call:bootrun %2 %3 %4
 @if "%1" == "debug" call:debug %2 %3 %4
+@if "%1" == "debugonly" call:debugonly %2 %3 %4
 @if "%1" == "run" call:run %2 %3 %4
+@if "%1" == "runonly" call:runonly %2 %3 %4
 @if "%1" == "runalone" call:runalone %2 %3 %4
 @if "%1" == "help" call:help
 @if "%1" == "gencert" call:gencert
@@ -64,8 +66,16 @@
     call:package %1 %2 %3 & java %JAVA_ARGS% -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y -jar target/%WAR_NAME%
 @goto:eof
 
+:debugonly
+    call java %JAVA_ARGS% -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y -jar target/%WAR_NAME%
+@goto:eof
+
 :run
     call:package %1 %2 %3 & java %JAVA_ARGS% -jar target/%WAR_NAME%
+@goto:eof
+
+:runonly
+    call java %JAVA_ARGS% -jar target/%WAR_NAME%
 @goto:eof
 
 :runalone
