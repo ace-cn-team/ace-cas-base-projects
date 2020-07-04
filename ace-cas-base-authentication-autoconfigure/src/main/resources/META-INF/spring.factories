@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ace.cas.base.authentication.autoconfigure.OAuth2HttpJsonPrincipalAuthenticationHandlerAutoConfigure

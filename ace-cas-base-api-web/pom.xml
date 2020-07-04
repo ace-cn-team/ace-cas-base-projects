@@ -12,6 +12,14 @@
     <packaging>war</packaging>
     <dependencies>
         <dependency>
+            <groupId>org.ace</groupId>
+            <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ace</groupId>
+            <artifactId>ace-cas-base-authentication-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
             <version>${spring.boot.version}</version>
@@ -40,10 +48,7 @@
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-generic</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.ace</groupId>
-            <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

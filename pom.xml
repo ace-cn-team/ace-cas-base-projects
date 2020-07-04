@@ -35,14 +35,21 @@
         <module>ace-cas-base-api</module>
         <module>ace-cas-base-api-client-autoconfigure</module>
         <module>ace-cas-base-api-web</module>
+        <module>ace-cas-base-api-web-junit</module>
         <module>ace-cas-base-discovery-client-autoconfigure</module>
         <module>ace-cas-base-define</module>
+        <module>ace-cas-base-authentication-autoconfigure</module>
     </modules>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.ace</groupId>
                 <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-cas-base-authentication-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -71,11 +78,71 @@
                 <version>${ace.fw.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-utils-web</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-ms-application</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-ms-application-autoconfigure</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-ms-discovery-server-autoconfigure</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-restful-base-api-web</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-restful-base-api-web-mybatis-plus-autoconfigure</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-mybatis-plus-extension</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-log4j2-autoconfigure</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-data</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-feign</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-json</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-fw-json-fastjson-autoconfigure</artifactId>
+                <version>${ace.fw.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-context</artifactId>
                 <version>${spring.cloud.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-commons</artifactId>
@@ -101,44 +168,48 @@
                 <artifactId>cas-server-support-generic</artifactId>
                 <version>${cas.version}</version>
             </dependency>
-
-
             <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-jsr223</artifactId>
-                <version>3.0.4</version>
-                <scope>compile</scope>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>cglib</artifactId>
-                        <groupId>cglib</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>cglib-full</artifactId>
-                        <groupId>cglib</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>slf4j-log4j12</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>slf4j-simple</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>log4j-to-slf4j</artifactId>
-                        <groupId>org.apache.logging.log4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>commons-cli</artifactId>
-                        <groupId>commons-cli</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>groovy</artifactId>
-                        <groupId>org.codehaus.groovy</groupId>
-                    </exclusion>
-                </exclusions>
+                <groupId>org.apereo.cas</groupId>
+                <artifactId>cas-server-support-oauth-core-api</artifactId>
+                <version>${cas.version}</version>
             </dependency>
+
+            <!--            <dependency>-->
+            <!--                <groupId>org.codehaus.groovy</groupId>-->
+            <!--                <artifactId>groovy-jsr223</artifactId>-->
+            <!--                <version>3.0.4</version>-->
+            <!--                <scope>compile</scope>-->
+            <!--                <exclusions>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>cglib</artifactId>-->
+            <!--                        <groupId>cglib</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>cglib-full</artifactId>-->
+            <!--                        <groupId>cglib</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>slf4j-log4j12</artifactId>-->
+            <!--                        <groupId>org.slf4j</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>slf4j-simple</artifactId>-->
+            <!--                        <groupId>org.slf4j</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>log4j-to-slf4j</artifactId>-->
+            <!--                        <groupId>org.apache.logging.log4j</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>commons-cli</artifactId>-->
+            <!--                        <groupId>commons-cli</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <artifactId>groovy</artifactId>-->
+            <!--                        <groupId>org.codehaus.groovy</groupId>-->
+            <!--                    </exclusion>-->
+            <!--                </exclusions>-->
+            <!--            </dependency>-->
             <dependency>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-json</artifactId>

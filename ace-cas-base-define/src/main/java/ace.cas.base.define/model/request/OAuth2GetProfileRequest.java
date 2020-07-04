@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Data
 @Builder
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetOAuth2TokenRequest {
-    private String grantType;
-    private String clientId;
-    private String clientSecret;
-    private String username;
-    private String password;
+public class OAuth2GetProfileRequest {
+    /**
+     * 根据access token 获取 profile
+     */
+    private String access_token;
 }

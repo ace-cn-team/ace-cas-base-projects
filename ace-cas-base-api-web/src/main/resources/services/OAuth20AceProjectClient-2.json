@@ -8,7 +8,10 @@
   "renewRefreshToken" : true,
   "id" : 2,
   "evaluationOrder": 1,
-  "requiredHandlers" : [ "java.util.HashSet", [ "OAuth2RedisAuthenticationHandler" ] ],
+  "authenticationPolicy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAuthenticationPolicy",
+    "requiredAuthenticationHandlers" : ["java.util.TreeSet", [ "OAuth2HttpJsonPrincipalAuthenticationHandler" ]]
+  },
   "attributeReleasePolicy" : {
     "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
   }
