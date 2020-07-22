@@ -1,6 +1,6 @@
 package ace.cas.base.api.facade.impl;
 
-import ace.cas.base.api.facade.OAuth2BaseServiceFacade;
+import ace.cas.base.api.facade.OAuth2BaseApiFacade;
 import ace.cas.base.api.OAuth2BaseApi;
 import ace.cas.base.define.constant.CasConstants;
 import ace.cas.base.define.model.bo.OAuth2Profile;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @description
  */
 @Slf4j
-public class OAuth2BaseServiceFacadeImpl implements OAuth2BaseServiceFacade {
+public class OAuth2BaseApiFacadeImpl implements OAuth2BaseApiFacade {
     @Setter
     private OAuth2BaseApi oAuth2BaseApi;
 

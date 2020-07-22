@@ -1,14 +1,13 @@
 package ace.cas.base.api.client.autoconfigure;
 
-import ace.cas.base.api.facade.OAuth2BaseServiceFacade;
-import ace.cas.base.api.facade.impl.OAuth2BaseServiceFacadeImpl;
+import ace.cas.base.api.facade.OAuth2BaseApiFacade;
+import ace.cas.base.api.facade.impl.OAuth2BaseApiFacadeImpl;
 import ace.cas.base.api.OAuth2BaseApi;
 import ace.cas.base.define.constant.CasConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -27,8 +26,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EnableFeignClientAutoConfigure {
     @Bean
-    public OAuth2BaseServiceFacade oAuth2BaseServiceFacade(OAuth2BaseApi oAuth2BaseApi) {
-        OAuth2BaseServiceFacadeImpl oAuth2BaseServiceFacade = new OAuth2BaseServiceFacadeImpl();
+    public OAuth2BaseApiFacade oAuth2BaseServiceFacade(OAuth2BaseApi oAuth2BaseApi) {
+        OAuth2BaseApiFacadeImpl oAuth2BaseServiceFacade = new OAuth2BaseApiFacadeImpl();
         oAuth2BaseServiceFacade.setOAuth2BaseApi(oAuth2BaseApi);
         return oAuth2BaseServiceFacade;
     }

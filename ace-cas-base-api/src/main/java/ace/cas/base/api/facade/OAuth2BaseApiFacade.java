@@ -21,7 +21,7 @@ import javax.validation.Valid;
  * @description {@link OAuth2BaseApi}接口包装
  */
 @Validated
-public interface OAuth2BaseServiceFacade {
+public interface OAuth2BaseApiFacade {
     @ApiOperation(value = "获取 oauth2 token")
     GenericResponseExt<OAuth2Token> getOAuth2Token(@Valid OAuth2GetTokenFacadeRequest request);
 
