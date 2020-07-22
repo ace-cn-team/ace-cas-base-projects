@@ -5,16 +5,16 @@
     <parent>
         <artifactId>ace-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0.3</version>
     </parent>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0.2</version>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ace-cas-base-projects</artifactId>
     <description>统一认证</description>
     <properties>
-        <ace.fw.version>1.0-SNAPSHOT</ace.fw.version>
-        <cas.version>6.2.0-RC5</cas.version>
+        <ace.fw.version>1.0.0.5</ace.fw.version>
+        <cas.version>6.2.0</cas.version>
         <spring.cloud.version>2.2.0.RELEASE</spring.cloud.version>
         <spring-boot-maven-plugin.version>2.2.4.RELEASE</spring-boot-maven-plugin.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
@@ -66,11 +66,6 @@
                 <groupId>org.ace</groupId>
                 <artifactId>ace-cas-base-api-client-autoconfigure</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ace</groupId>
-                <artifactId>ace-fw-json</artifactId>
-                <version>${ace.fw.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.ace</groupId>
@@ -161,6 +156,26 @@
             <dependency>
                 <groupId>org.apereo.cas</groupId>
                 <artifactId>cas-server-support-redis-ticket-registry</artifactId>
+                <version>${cas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apereo.cas</groupId>
+                <artifactId>cas-server-core-authentication-api</artifactId>
+                <version>${cas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apereo.cas</groupId>
+                <artifactId>cas-server-core-api-configuration-model</artifactId>
+                <version>${cas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apereo.cas</groupId>
+                <artifactId>cas-server-support-oauth-webflow</artifactId>
+                <version>${cas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apereo.cas</groupId>
+                <artifactId>cas-server-support-pac4j-authentication</artifactId>
                 <version>${cas.version}</version>
             </dependency>
             <dependency>
@@ -534,6 +549,15 @@
     </distributionManagement>
     <build>
         <plugins>
+            <!-- 统一更改版本  说明：http://www.lavecoral.me/archives/213.html -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
             <!-- 要将源码放上去，需要加入这个插件 -->
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>

@@ -1,7 +1,7 @@
 package ace.cas.base.api.facade.impl;
 
 import ace.cas.base.api.facade.OAuth2BaseServiceFacade;
-import ace.cas.base.api.service.OAuth2BaseService;
+import ace.cas.base.api.OAuth2BaseApi;
 import ace.cas.base.define.constant.CasConstants;
 import ace.cas.base.define.model.bo.OAuth2Profile;
 import ace.cas.base.define.model.bo.OAuth2Token;
@@ -36,7 +36,7 @@ import java.util.Objects;
 @Slf4j
 public class OAuth2BaseServiceFacadeImpl implements OAuth2BaseServiceFacade {
     @Setter
-    private OAuth2BaseService oAuth2BaseService;
+    private OAuth2BaseApi oAuth2BaseApi;
 
     /**
      * 封装 {@link org.apereo.cas.support.oauth.web.endpoints.OAuth20AccessTokenEndpointController}
@@ -62,7 +62,7 @@ public class OAuth2BaseServiceFacadeImpl implements OAuth2BaseServiceFacade {
                     .profile(oAuth2ProfileJsonString)
                     .build();
 
-            String body = oAuth2BaseService.getOAuth2Token(oauth2GetTokenRequest);
+            String body = oAuth2BaseApi.getOAuth2Token(oauth2GetTokenRequest);
             if (body.indexOf("error") > 0) {
                 log.error("请求失败[OAuth2BaseServiceFacadeImpl][getOAuth2Token]," + body);
                 return GenericResponseExtUtils.buildBySystemCodeEnum(SystemCodeEnum.ERROR_SYSTEM_EXCEPTION);
@@ -93,7 +93,7 @@ public class OAuth2BaseServiceFacadeImpl implements OAuth2BaseServiceFacade {
                     .access_token(request.getAccessToken())
                     .build();
 
-            String body = oAuth2BaseService.getProfile(oauth2GetTokenRequest);
+            String body = oAuth2BaseApi.getProfile(oauth2GetTokenRequest);
             if (body.indexOf("error") > 0) {
                 log.error("请求失败[OAuth2BaseServiceFacadeImpl][getProfile]," + body);
                 return GenericResponseExtUtils.buildBySystemCodeEnum(SystemCodeEnum.ERROR_SYSTEM_EXCEPTION);
@@ -131,7 +131,7 @@ public class OAuth2BaseServiceFacadeImpl implements OAuth2BaseServiceFacade {
                     .token(request.getToken())
                     .build();
 
-            String body = oAuth2BaseService.revoke(oauth2RevokeRequest);
+            String body = oAuth2BaseApi.revoke(oauth2RevokeRequest);
             if (body.indexOf("error") > 0) {
                 log.error("请求失败[OAuth2BaseServiceFacadeImpl][revoke]," + body);
                 return GenericResponseExtUtils.buildBySystemCodeEnum(SystemCodeEnum.ERROR_SYSTEM_EXCEPTION);
@@ -167,7 +167,7 @@ public class OAuth2BaseServiceFacadeImpl implements OAuth2BaseServiceFacade {
                     ).getBytes("utf-8")
             );
             String basicAuthHeader = String.format("Basic %s", basicAuthBase64);
-            String body = oAuth2BaseService.introspect(oauth2RevokeRequest, basicAuthHeader);
+            String body = oAuth2BaseApi.introspect(oauth2RevokeRequest, basicAuthHeader);
             if (body.indexOf("error") > 0) {
                 log.error("请求失败[OAuth2BaseServiceFacadeImpl][introspect]," + body);
                 return GenericResponseExtUtils.buildBySystemCodeEnum(SystemCodeEnum.ERROR_SYSTEM_EXCEPTION);

@@ -4,7 +4,7 @@ public interface CasConstants {
     /**
      * feign客户端服务接口包路径
      */
-    String FEIGN_CLIENT_SERVICE_PACKAGE = "ace.cas.base.api.service";
+    String FEIGN_CLIENT_SERVICE_PACKAGE = "ace.cas.base.api";
     /**
      * feign客户端服务接口封闭包路径
      */

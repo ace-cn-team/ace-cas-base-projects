@@ -1,4 +1,4 @@
-package ace.cas.base.api.service;
+package ace.cas.base.api;
 
 import ace.cas.base.define.constant.CasConstants;
 import ace.cas.base.define.model.request.OAuth2GetProfileRequest;
@@ -35,7 +35,7 @@ import javax.validation.constraints.NotBlank;
         configuration = {MultipartSupportConfig.class}
 )
 @Validated
-public interface OAuth2BaseService {
+public interface OAuth2BaseApi {
     @ApiOperation(value = "获取 oauth2 token")
     @RequestMapping(path = "/oauth2.0/token", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}, method = RequestMethod.POST)
     String getOAuth2Token(@Valid OAuth2GetTokenRequest request);
