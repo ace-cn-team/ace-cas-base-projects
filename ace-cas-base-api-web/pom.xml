@@ -5,7 +5,7 @@
     <parent>
         <artifactId>ace-cas-base-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0.0.3</version>
+        <version>1.0.0.5</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ace-cas-base-api-web</artifactId>
@@ -14,10 +14,20 @@
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>HdrHistogram</artifactId>
+                    <groupId>org.hdrhistogram</groupId>
+                </exclusion>
+            </exclusions>
+
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-cas-base-authentication-autoconfigure</artifactId>
+            <exclusions>
+
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,22 +45,43 @@
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-json-service-registry</artifactId>
+            <exclusions>
+
+                <exclusion>
+                    <artifactId>okio</artifactId>
+                    <groupId>com.squareup.okio</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-oauth-webflow</artifactId>
+            <exclusions>
+
+                <exclusion>
+                    <artifactId>bcpkix-jdk15on</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-pac4j-authentication</artifactId>
+            <exclusions>
+
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-redis-ticket-registry</artifactId>
+            <exclusions>
+
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-generic</artifactId>
+
         </dependency>
 
         <dependency>

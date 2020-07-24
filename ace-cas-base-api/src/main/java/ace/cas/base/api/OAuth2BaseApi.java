@@ -30,7 +30,7 @@ import javax.validation.constraints.NotBlank;
  */
 @FeignClient(
         name = CasConstants.FEIGN_CLIENT_NAME,
-        contextId = "oauth2BaseService",
+        contextId = "OAuth2BaseApi",
         path = "/",
         configuration = {MultipartSupportConfig.class}
 )
@@ -45,11 +45,11 @@ public interface OAuth2BaseApi {
     String getProfile(@Valid OAuth2GetProfileRequest request);
 
     @ApiOperation(value = "删除 oauth2 token 根据 access token")
-    @RequestMapping(path = "/oauth2.0/revoke",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}, method = RequestMethod.POST)
+    @RequestMapping(path = "/oauth2.0/revoke", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}, method = RequestMethod.POST)
     String revoke(@Valid OAuth2RevokeRequest request);
 
     @ApiOperation(value = "验证 access token 是否有效")
-    @RequestMapping(path = "/oauth2.0/introspect", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE},method = RequestMethod.POST)
+    @RequestMapping(path = "/oauth2.0/introspect", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}, method = RequestMethod.POST)
     String introspect(@Valid OAuth2IntrospectRequest request, @NotBlank @RequestHeader(value = "Authorization", required = true) String basicAuth);
 
 

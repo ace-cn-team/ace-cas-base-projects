@@ -8,3 +8,6 @@
 /ace-cas-base-define/target/
 /ace-cas-base-define/ace-cas-base-define.iml
 /ace-cas-base-discovery-client-autoconfigure/ace-cas-base-discovery-client-autoconfigure.iml
+/ace-cas-base-authentication-autoconfigure/target/
+/ace-cas-base-authentication-autoconfigure/ace-cas-base-authentication-autoconfigure.iml
+/ace-cas-base-api-web-junit/ace-cas-base-api-web-junit.iml
