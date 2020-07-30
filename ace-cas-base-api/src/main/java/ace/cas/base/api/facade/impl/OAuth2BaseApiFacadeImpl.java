@@ -47,9 +47,7 @@ public class OAuth2BaseApiFacadeImpl implements OAuth2BaseApiFacade {
     @Override
     public GenericResponseExt<OAuth2Token> getOAuth2Token(OAuth2GetTokenFacadeRequest request) {
         try {
-            OAuth2Profile oAuth2Profile = OAuth2Profile.builder()
-                    .accountId(request.getAccountId())
-                    .build();
+            OAuth2Profile oAuth2Profile = request.getProfile();
 
             String oAuth2ProfileJsonString = JsonUtils.toJson(oAuth2Profile);
 

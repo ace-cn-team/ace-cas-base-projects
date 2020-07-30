@@ -27,4 +27,7 @@ public class OAuth2GetTokenFacadeRequest {
      */
     @NotBlank
     private String accountId;
+
+    @NotNull
+    OAuth2Profile profile;
 }

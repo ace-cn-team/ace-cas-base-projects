@@ -18,5 +18,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OAuth2Profile implements Serializable {
+    /**
+     * 账号ID
+     */
     private String accountId;
+    /**
+     * 账号所属应用ID
+     */
+    private String appId;
 }

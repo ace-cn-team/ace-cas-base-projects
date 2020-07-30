@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.UUID;
+
 /**
  * @author Caspar
  * @contract 279397942@qq.com
@@ -41,6 +43,10 @@ public class CheckAllBizTest {
         String accountId = Generators.timeBasedGenerator().generate().toString();
         GenericResponseExt<OAuth2Token> getOAuth2TokenResult = oAuth2BaseApiFacade.getOAuth2Token(OAuth2GetTokenFacadeRequest.builder()
                 .accountId(accountId)
+                .profile(OAuth2Profile.builder()
+                        .accountId(accountId)
+                        .appId(UUID.randomUUID().toString())
+                        .build())
                 .build());
 
         OAuth2Token oAuth2Token = getOAuth2TokenResult.check();
