@@ -3,6 +3,7 @@ package ace.cas.base.api.facade.impl;
 import ace.cas.base.api.facade.OAuth2BaseApiFacade;
 import ace.cas.base.api.OAuth2BaseApi;
 import ace.cas.base.define.constant.CasConstants;
+import ace.cas.base.define.enums.CasBusinessErrorEnum;
 import ace.cas.base.define.model.bo.OAuth2Profile;
 import ace.cas.base.define.model.bo.OAuth2Token;
 import ace.cas.base.define.model.request.OAuth2GetProfileRequest;
@@ -20,6 +21,7 @@ import ace.fw.exception.BusinessException;
 import ace.fw.json.JsonUtils;
 import ace.fw.model.response.GenericResponseExt;
 import ace.fw.util.GenericResponseExtUtils;
+import feign.FeignException;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -107,6 +109,12 @@ public class OAuth2BaseApiFacadeImpl implements OAuth2BaseApiFacade {
             return GenericResponseExt.<OAuth2Profile>builder()
                     .code(ex.getCode())
                     .message(ex.getMessage())
+                    .build();
+        } catch (FeignException.FeignClientException.Unauthorized ex) {
+            return GenericResponseExt.<OAuth2Profile>builder()
+                    .code(CasBusinessErrorEnum.NO_PERMISSION.getCode())
+                    .message(CasBusinessErrorEnum.NO_PERMISSION.getCode())
+                    .data(null)
                     .build();
         } catch (Exception ex) {
             log.error("[CasBaseFacadeServiceImpl][getProfile]", ex);

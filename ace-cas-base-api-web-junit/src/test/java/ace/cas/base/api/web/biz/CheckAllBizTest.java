@@ -3,6 +3,7 @@ package ace.cas.base.api.web.biz;
 import ace.cas.base.api.OAuth2BaseApi;
 import ace.cas.base.api.web.application.CasJUnitBaseApplication;
 import ace.cas.base.api.facade.OAuth2BaseApiFacade;
+import ace.cas.base.define.enums.CasBusinessErrorEnum;
 import ace.cas.base.define.model.bo.OAuth2Profile;
 import ace.cas.base.define.model.bo.OAuth2Token;
 import ace.cas.base.define.model.request.facade.OAuth2GetProfileFacadeRequest;
@@ -15,6 +16,7 @@ import ace.fw.json.JsonUtils;
 import ace.fw.model.response.GenericResponseExt;
 import com.fasterxml.uuid.Generators;
 import org.apache.commons.lang.StringUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +91,15 @@ public class CheckAllBizTest {
         if (Boolean.TRUE.equals(oAuth2IntrospectResponse2.getActive())) {
             throw new BusinessException("token 没有过期");
         }
+    }
+
+    @Test
+    public void test_0010_testNoPermissionAccessToken() {
+        GenericResponseExt responseExt = oAuth2BaseApiFacade.getProfile(OAuth2GetProfileFacadeRequest.builder()
+                .accessToken("111")
+                .build());
+
+        Assert.assertTrue(StringUtils.equalsIgnoreCase(CasBusinessErrorEnum.NO_PERMISSION.getCode(), responseExt.getCode()));
     }
 
 }

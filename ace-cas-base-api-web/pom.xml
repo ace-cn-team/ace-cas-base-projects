@@ -5,7 +5,7 @@
     <parent>
         <artifactId>ace-cas-base-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0.0.7</version>
+        <version>1.0.0.8</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ace-cas-base-api-web</artifactId>
@@ -13,26 +13,23 @@
     <dependencies>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>HdrHistogram</artifactId>
-                    <groupId>org.hdrhistogram</groupId>
-                </exclusion>
-            </exclusions>
-
+            <artifactId>ace-fw-tomcat-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ace</groupId>
+            <artifactId>ace-fw-ms-nacos-discovery-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-cas-base-authentication-autoconfigure</artifactId>
-            <exclusions>
-
-            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.ace</groupId>
+            <artifactId>ace-fw-actuator-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
-
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -46,7 +43,6 @@
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-json-service-registry</artifactId>
             <exclusions>
-
                 <exclusion>
                     <artifactId>okio</artifactId>
                     <groupId>com.squareup.okio</groupId>
@@ -57,7 +53,6 @@
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-oauth-webflow</artifactId>
             <exclusions>
-
                 <exclusion>
                     <artifactId>bcpkix-jdk15on</artifactId>
                     <groupId>org.bouncycastle</groupId>
@@ -67,21 +62,14 @@
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-pac4j-authentication</artifactId>
-            <exclusions>
-
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-redis-ticket-registry</artifactId>
-            <exclusions>
-
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-generic</artifactId>
-
         </dependency>
 
         <dependency>
@@ -109,7 +97,6 @@
     <build>
         <finalName>${project.name}</finalName>
         <plugins>
-
             <plugin>
                 <groupId>com.rimerosolutions.maven.plugins</groupId>
                 <artifactId>wrapper-maven-plugin</artifactId>
@@ -163,71 +150,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 复制生成的jar包到其他位置,方便使用jib插件制作docker image -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-lib-src-webapps</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <tasks>
-                                <!-- 你将要拷贝的位置 -->
-                                <copy todir="target/jib/ace/${project.name}">
-                                    <!-- 从哪里拷贝 -->
-                                    <fileset dir="${project.build.directory}">
-                                        <!-- 拷贝内容 -->
-                                        <include name="${project.name}.war"/>
-                                    </fileset>
-                                </copy>
-                                <copy todir="target/jib/etc">
-                                    <!-- 从哪里拷贝 -->
-                                    <fileset dir="etc"/>
-                                </copy>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--使用jib插件-->
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>2.1.0</version>
-                <configuration>
-                    <allowInsecureRegistries>true</allowInsecureRegistries>
-                    <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
-                    <from>
-                        <!--使用openjdk官方镜像，tag是 -->
-                        <image>nexus3.ace.com:8082/openjdk:11.0.6-jre-buster</image>
-                    </from>
-                    <to>
-                        <!--镜像名称和tag，使用了mvn内置变量${project.version}，表示当前工程的version-->
-                        <image>${project.name}:latest</image>
-                    </to>
-                    <!--容器相关的属性-->
-                    <container>
-                        <ports>
-                            <port>8080</port>
-                        </ports>
-                        <entrypoint>
-                            <arg>/bin/sh</arg>
-                            <arg>-c</arg>
-                            <arg>java -Xms1024M -Xmx2048M -jar /ace/${project.name}/${project.name}.war</arg>
-                        </entrypoint>
-                    </container>
-                    <extraDirectories>
-                        <paths>
-                            <path>src/main/jib</path>
-                            <path>target/jib</path>
-                        </paths>
-                    </extraDirectories>
-                </configuration>
-            </plugin>
-
         </plugins>
 
     </build>

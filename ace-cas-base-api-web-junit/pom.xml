@@ -5,12 +5,16 @@
     <parent>
         <artifactId>ace-cas-base-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0.0.7</version>
+        <version>1.0.0.8</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ace-cas-base-api-web-junit</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>org.ace</groupId>
+            <artifactId>ace-cas-base-api-client-autoconfigure</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-fw-ms-application</artifactId>
@@ -21,12 +25,13 @@
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-fw-ms-discovery-server-autoconfigure</artifactId>
+            <artifactId>ace-fw-ms-feign-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-cas-base-api-client-autoconfigure</artifactId>
+            <artifactId>ace-fw-ms-nacos-discovery-autoconfigure</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>org.ace</groupId>

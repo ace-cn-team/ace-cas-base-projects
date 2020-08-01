@@ -5,15 +5,16 @@
     <parent>
         <artifactId>ace-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0.0.3</version>
+        <version>1.0.0.10</version>
     </parent>
-    <version>1.0.0.7</version>
+    <version>1.0.0.8</version>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ace-cas-base-projects</artifactId>
     <description>统一认证</description>
     <properties>
-        <ace.fw.version>1.0.0.5</ace.fw.version>
+        <ace.dependency.management.version>1.0.0.10</ace.dependency.management.version>
+        <ace.fw.version>1.0.0.13</ace.fw.version>
         <cas.version>6.2.0</cas.version>
         <spring.cloud.version>2.2.0.RELEASE</spring.cloud.version>
         <spring-boot-maven-plugin.version>2.2.4.RELEASE</spring-boot-maven-plugin.version>
@@ -42,6 +43,20 @@
     </modules>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-dependency-management</artifactId>
+                <version>${ace.dependency.management.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.ace</groupId>
+                <artifactId>ace-framework-projects</artifactId>
+                <version>${ace.fw.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>org.ace</groupId>
                 <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
