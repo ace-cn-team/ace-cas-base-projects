@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-ace.cas.base.discovery.client.autoconfigure.DiscoveryClientAutoConfigure

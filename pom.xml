@@ -7,7 +7,7 @@
         <groupId>org.ace</groupId>
         <version>1.0.0.10</version>
     </parent>
-    <version>1.0.0.8</version>
+    <version>1.0.0.9</version>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ace-cas-base-projects</artifactId>
@@ -37,7 +37,6 @@
         <module>ace-cas-base-api-client-autoconfigure</module>
         <module>ace-cas-base-api-web</module>
         <module>ace-cas-base-api-web-junit</module>
-        <module>ace-cas-base-discovery-client-autoconfigure</module>
         <module>ace-cas-base-define</module>
         <module>ace-cas-base-authentication-autoconfigure</module>
     </modules>
@@ -56,11 +55,6 @@
                 <version>${ace.fw.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.ace</groupId>
-                <artifactId>ace-cas-base-discovery-client-autoconfigure</artifactId>
-                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.ace</groupId>
