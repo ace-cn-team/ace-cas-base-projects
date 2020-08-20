@@ -6,6 +6,7 @@ import ace.cas.base.define.constant.CasConstants;
 import ace.cas.base.define.enums.CasBusinessErrorEnum;
 import ace.cas.base.define.model.bo.OAuth2Profile;
 import ace.cas.base.define.model.bo.OAuth2Token;
+import ace.cas.base.define.model.bo.OAuth2TokenDto;
 import ace.cas.base.define.model.request.OAuth2GetProfileRequest;
 import ace.cas.base.define.model.request.OAuth2GetTokenRequest;
 import ace.cas.base.define.model.request.OAuth2IntrospectRequest;
@@ -67,8 +68,15 @@ public class OAuth2BaseApiFacadeImpl implements OAuth2BaseApiFacade {
                 log.error("请求失败[OAuth2BaseServiceFacadeImpl][getOAuth2Token]," + body);
                 return GenericResponseExtUtils.buildBySystemCodeEnum(SystemCodeEnum.ERROR_SYSTEM_EXCEPTION);
             }
-            OAuth2Token OAuth2Token = JsonUtils.toObject(body, OAuth2Token.class);
-            return GenericResponseExtUtils.buildSuccessWithData(OAuth2Token);
+            OAuth2TokenDto oAuth2TokenDto = JsonUtils.toObject(body, OAuth2TokenDto.class);
+            OAuth2Token oAuth2Token = OAuth2Token.builder()
+                    .accessToken(oAuth2TokenDto.getAccess_token())
+                    .expiresIn(oAuth2TokenDto.getExpires_in())
+                    .refreshToken(oAuth2TokenDto.getRefresh_token())
+                    .scope(oAuth2TokenDto.getScope())
+                    .tokenType(oAuth2TokenDto.getToken_type())
+                    .build();
+            return GenericResponseExtUtils.buildSuccessWithData(oAuth2Token);
         } catch (BusinessException ex) {
             return GenericResponseExt.<OAuth2Token>builder()
                     .code(ex.getCode())

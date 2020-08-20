@@ -41,11 +41,13 @@ function bootrun() {
 }
 
 function debug() {
-	package && java -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/cas.war
+  clean && package && java -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/ace-cas-base-api-web.war
 }
-
+function debugonly() {
+  java -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/ace-cas-base-api-web.war
+}
 function run() {
-	package && java -jar target/cas.war
+	clean && package && java -jar target/ace-cas-base-api-web.war
 }
 
 function runalone() {
@@ -163,6 +165,9 @@ case "$1" in
     ;;
 "debug")
     debug "$@"
+    ;;
+"debugonly")
+    debugonly "$@"
     ;;
 "run")
     run "$@"

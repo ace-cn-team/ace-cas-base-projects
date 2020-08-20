@@ -7,14 +7,14 @@
         <groupId>org.ace</groupId>
         <version>1.0.0.10</version>
     </parent>
-    <version>1.0.0.10</version>
+    <version>1.0.0.11</version>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ace-cas-base-projects</artifactId>
     <description>统一认证</description>
     <properties>
-        <ace.dependency.management.version>1.0.0.10</ace.dependency.management.version>
-        <ace.fw.version>1.0.0.13</ace.fw.version>
+        <ace.dependency.management.version>1.0.0.13</ace.dependency.management.version>
+        <ace.fw.version>1.0.0.35</ace.fw.version>
         <cas.version>6.2.0</cas.version>
         <spring.cloud.version>2.2.0.RELEASE</spring.cloud.version>
         <spring-boot-maven-plugin.version>2.2.4.RELEASE</spring-boot-maven-plugin.version>
@@ -22,7 +22,7 @@
         <app.server>-tomcat</app.server>
 
         <mainClassName>org.apereo.cas.web.CasWebApplication</mainClassName>
-        <isExecutable>false</isExecutable>
+        <isExecutable>true</isExecutable>
         <manifestFileToUse>
             ${project.build.directory}/war/work/org.apereo.cas/cas-server-webapp${app.server}/META-INF/MANIFEST.MF
         </manifestFileToUse>
@@ -514,6 +514,11 @@
                         <groupId>org.codehaus.groovy</groupId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.github.javaparser</groupId>
+                <artifactId>javaparser-core</artifactId>
+                <version>3.16.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
