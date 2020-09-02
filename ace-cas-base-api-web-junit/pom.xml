@@ -5,7 +5,7 @@
     <parent>
         <artifactId>ace-cas-base-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0.0.11</version>
+        <version>1.0.0.12</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -32,11 +32,6 @@
             <artifactId>ace-fw-ms-nacos-discovery-autoconfigure</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.ace</groupId>
-            <artifactId>ace-fw-data</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-fw-log4j2-autoconfigure</artifactId>
